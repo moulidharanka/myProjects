@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPCO Assignment-1 Solutions</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .document {
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px double #1a237e;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #1a237e;
+            font-size: 18px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        
+        .header h2 {
+            color: #c62828;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        
+        .info-box {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 10px;
+            background: #e8eaf6;
+            border-left: 4px solid #1a237e;
+        }
+        
+        .question {
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        
+        .question-header {
+            background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .question-content {
+            border: 2px solid #1a237e;
+            border-top: none;
+            padding: 20px;
+            background: #fafafa;
+        }
+        
+        .solution {
+            margin-top: 15px;
+        }
+        
+        .section-title {
+            color: #c62828;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 15px 0 10px 0;
+            border-bottom: 1px solid #c62828;
+            padding-bottom: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        th {
+            background: #1a237e;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+        
+        .kmap {
+            display: inline-block;
+            margin: 10px;
+            border: 2px solid #333;
+        }
+        
+        .kmap-cell {
+            width: 50px;
+            height: 40px;
+            border: 1px solid #666;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: white;
+        }
+        
+        .kmap-header {
+            background: #3949ab;
+            color: white;
+        }
+        
+        .group1 { background: #ffccbc; }
+        .group2 { background: #c8e6c9; }
+        .group3 { background: #bbdefb; }
+        
+        .logic-diagram {
+            background: white;
+            border: 2px solid #333;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        
+        .formula {
+            background: #fff3e0;
+            padding: 10px;
+            border-left: 4px solid #ff6f00;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            background: #fff59d;
+            padding: 2px 5px;
+        }
+        
+        .marks {
+            float: right;
+            background: #c62828;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+        
+        .state-diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .flip-flop-table {
+            font-size: 12px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .document {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <div class="header">
+            <h1>KNOWLEDGE INSTITUTE OF TECHNOLOGY, SALEM-637 504</h1>
+            <h2>(An Autonomous Institution)</h2>
+            <h1>Department of Electronics and Communication Engineering</h1>
+            <h2>BE23CS4101 – Digital Principles and Computer Organization</h2>
+            <h1>Assignment-1 Solutions</h1>
+        </div>
+        
+        <div class="info-box">
+            <span><strong>Year/Deg./Branch/Sem:</strong> I / BTech - AI & DS / I</span>
+            <span><strong>Date:</strong> 25.02.2026</span>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <div class="question-header">
+                Question 1 <span class="marks">15 Marks | CO1 | L3</span>
+            </div>
+            <div class="question-content">
+                <p><strong>Problem:</strong> Design a minimum-gate combinational circuit that produces an alarm output (Y=1) only when a part is detected at station A or when parts are detected at both B and C simultaneously.</p>
+                
+                <div class="solution">
+                    <div class="section-title">1.1 Problem Analysis</div>
+                    <p>Let A, B, C be the inputs (1 = part detected, 0 = no part detected)</p>
+                    <p>Output Y = 1 when: <span class="highlight">A = 1</span> OR <span class="highlight">(B = 1 AND C = 1)</span></p>
+                    <p>Boolean Expression: <strong>Y = A + BC</strong></p>
+
+                    <div class="section-title">1.2 Truth Table</div>
+                    <table>
+                        <tr>
+                            <th>A</th><th>B</th><th>C</th><th>BC</th><th>Y = A + BC</th><th>Condition</th>
+                        </tr>
+                        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>No alarm</td></tr>
+                        <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>No alarm</td></tr>
+                        <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>No alarm</td></tr>
+                        <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>Parts at B & C</td></tr>
+                        <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>Part at A</td></tr>
+                        <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>Part at A</td></tr>
+                        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>Part at A</td></tr>
+                        <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>Part at A (or all)</td></tr>
+                    </table>
+
+                    <div class="section-title">1.3 K-Map Simplification</div>
+                    <p>Since Y = A + BC is already in minimal SOP form, the K-map confirms this:</p>
+                    
+                    <div style="text-align: center;">
+                        <table style="width: auto; margin: 0 auto; display: inline-table;">
+                            <tr>
+                                <th colspan="2" rowspan="2">Y</th>
+                                <th colspan="4">BC</th>
+                            </tr>
+                            <tr>
+                                <th>00</th><th>01</th><th>11</th><th>10</th>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">A</th>
+                                <th>0</th>
+                                <td>0</td>
+                                <td>0</td>
+                                <td class="group1">1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>1</th>
+                                <td class="group2">1</td>
+                                <td class="group2">1</td>
+                                <td class="group1 group2">1</td>
+                                <td class="group2">1</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 10px;">
+                        <span style="background: #ffccbc; padding: 5px;">Group 1: BC (m3)</span> &nbsp;&nbsp;
+                        <span style="background: #c8e6c9; padding: 5px;">Group 2: A (m4,m5,m6,m7)</span>
+                    </p>
+
+                    <div class="formula">
+                        Simplified Expression: Y = A + BC
+                    </div>
+
+                    <div class="section-title">1.4 Logic Diagram</div>
+                    <div class="logic-diagram">
+        A ────────────────┐
+                          │
+                          ▼
+        B ────┐      ┌─────────┐
+              │      │         │
+              └──►───┤   OR    ├──► Y (Alarm)
+        C ────┐      │  Gate   │
+              │      │         │
+              └──►───┤   AND   ├──► (BC)
+                     │  Gate   │
+                     └────┬────┘
+                          │
+                    (A + BC)
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <div style="display: inline-block; text-align: left; border: 2px solid #333; padding: 20px; background: white;">
+                            <div style="font-family: monospace; line-height: 2;">
+<span style="color: #c62828;">         A ───────────────┐</span>
+<span style="color: #c62828;">                           │</span>
+<span style="color: #c62828;">                           ▼</span>
+<span style="color: #1565c0;">    B ────┐           ┌────────┐</span>
+<span style="color: #1565c0;">          │           │        │</span>
+<span style="color: #1565c0;">          └──►[AND]───┤  OR    ├──► Y</span>
+<span style="color: #1565c0;">    C ────┐    ↑      │   ≥1   │</span>
+<span style="color: #1565c0;">          │    BC     │        │</span>
+<span style="color: #1565c0;">          └───────────┤   A    │</span>
+<span style="color: #1565c0;">                      └────────┘</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title">1.5 Gate Count & Verification</div>
+                    <ul>
+                        <li><strong>AND Gate:</strong> 1 (2-input, for BC)</li>
+                        <li><strong>OR Gate:</strong> 1 (2-input, for A + BC)</li>
+                        <li><strong>Total Gates:</strong> 2 (Minimum possible)</li>
+                        <li><strong>Literal Count:</strong> 3 (A, B, C)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <div class="question-header">
+                Question 2 <span class="marks">10 Marks | CO1 | L3</span>
+            </div>
+            <div class="question-content">
+                <p><strong>Problem:</strong> Design a circuit that produces HIGH output when a 3-bit input is an even number.</p>
+                
+                <div class="solution">
+                    <div class="section-title">2.1 Problem Analysis</div>
+                    <p>Let the 3-bit input be X = A₂A₁A₀ (where A₂ is MSB, A₀ is LSB)</p>
+                    <p>A number is <strong>EVEN</strong> if its <strong>Least Significant Bit (LSB) = 0</strong></p>
+                    <p>Therefore, output Y = 1 when <strong>A₀ = 0</strong></p>
+                    <p>Boolean Expression: <strong>Y = A₀'</strong> (NOT A₀)</p>
+
+                    <div class="section-title">2.2 Truth Table</div>
+                    <table>
+                        <tr>
+                            <th>Decimal</th><th>A₂</th><th>A₁</th><th>A₀</th><th>Y (Even?)</th><th>Remark</th>
+                        </tr>
+                        <tr style="background: #ffebee;"><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0 is even ✓</td></tr>
+                        <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>Odd</td></tr>
+                        <tr style="background: #ffebee;"><td>2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>Even ✓</td></tr>
+                        <tr><td>3</td><td>0</td><td>1</td><td>1</td><td>0</td><td>Odd</td></tr>
+                        <tr style="background: #ffebee;"><td>4</td><td>1</td><td>0</td><td>0</td><td>1</td><td>Even ✓</td></tr>
+                        <tr><td>5</td><td>1</td><td>0</td><td>1</td><td>0</td><td>Odd</td></tr>
+                        <tr style="background: #ffebee;"><td>6</td><td>1</td><td>1</td><td>0</td><td>1</td><td>Even ✓</td></tr>
+                        <tr><td>7</td><td>1</td><td>1</td><td>1</td><td>0</td><td>Odd</td></tr>
+                    </table>
+
+                    <div class="section-title">2.3 K-Map Simplification</div>
+                    <p>Plotting Y for A₂, A₁, A₀:</p>
+                    
+                    <div style="text-align: center;">
+                        <table style="width: auto; margin: 0 auto; display: inline-table;">
+                            <tr>
+                                <th colspan="2" rowspan="2">Y</th>
+                                <th colspan="2">A₂</th>
+                            </tr>
+                            <tr>
+                                <th>0</th><th>1</th>
+                            </tr>
+                            <tr>
+                                <th rowspan="4">A₁A₀</th>
+                                <th>00</th>
+                                <td class="group1">1</td>
+                                <td class="group1">1</td>
+                            </tr>
+                            <tr>
+                                <th>01</th>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>11</th>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>10</th>
+                                <td class="group1">1</td>
+                                <td class="group1">1</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 10px;">
+                        <span style="background: #ffccbc; padding: 5px;">Group: All cells where A₀ = 0 (m0, m2, m4, m6)</span>
+                    </p>
+
+                    <div class="formula">
+                        Simplified Expression: Y = A₀' (NOT of LSB)
+                    </div>
+                    <p><strong>Explanation:</strong> The output depends ONLY on A₀. When A₀=0, number is even regardless of A₂ and A₁.</p>
+
+                    <div class="section-title">2.4 Logic Diagram</div>
+                    <div style="text-align: center;">
+                        <div style="display: inline-block; text-align: left; border: 2px solid #333; padding: 30px; background: white;">
+                            <div style="font-family: monospace; line-height: 2; font-size: 16px;">
+<span style="color: #666;">    A₂ ────────┐   (Don't Care - Not Used)</span>
+<span style="color: #666;">                │</span>
+<span style="color: #666;">    A₁ ────────┤   (Don't Care - Not Used)</span>
+<span style="color: #666;">                │</span>
+<span style="color: #c62828;">    A₀ ────┐    │</span>
+<span style="color: #c62828;">            │    │</span>
+<span style="color: #c62828;">            ▼    │</span>
+<span style="color: #1565c0;">         ┌────┐  │</span>
+<span style="color: #1565c0;">         │ NOT│──┴──► Y (HIGH if Even)</span>
+<span style="color: #1565c0;">         │  ○ │</span>
+<span style="color: #1565c0;">         └────┘</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title">2.5 Circuit Implementation</div>
+                    <table>
+                        <tr>
+                            <th>Component</th>
+                            <th>Specification</th>
+                            <th>Quantity</th>
+                        </tr>
+                        <tr>
+                            <td>NOT Gate (Inverter)</td>
+                            <td>74LS04 (1-input)</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Input Lines</td>
+                            <td>A₀ only (A₁, A₂ floating/ignored)</td>
+                            <td>-</td>
+                        </tr>
+                    </table>
+
+                    <div class="formula" style="background: #e8f5e9; border-color: #2e7d32;">
+                        <strong>Most Efficient Design:</strong> Single NOT gate on A₀ input<br>
+                        Y = A₀' 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <div class="question-header">
+                Question 3 <span class="marks">15 Marks | CO2 | L3</span>
+            </div>
+            <div class="question-content">
+                <p><strong>Problem:</strong> Design a 2-bit synchronous up-counter using JK Flip-Flops that counts in the sequence: 00 → 01 → 10 → 11 → 00...</p>
+                
+                <div class="solution">
+                    <div class="section-title">3.1 Problem Analysis</div>
+                    <p><strong>Counter Type:</strong> 2-bit Synchronous Up-Counter</p>
+                    <p><strong>Sequence:</strong> 00 → 01 → 10 → 11 → 00 (Binary counting 0 to 3)</p>
+                    <p><strong>Flip-Flops Required:</strong> 2 (Let Q₁ = MSB, Q₀ = LSB)</p>
+                    <p><strong>Clock:</strong> Common clock for both FFs (synchronous)</p>
+
+                    <div class="section-title">3.2 State Table</div>
+                    <table>
+                        <tr>
+                            <th colspan="2">Present State</th>
+                            <th colspan="2">Next State</th>
+                            <th colspan="4">Flip-Flop Inputs</th>
+                        </tr>
+                        <tr>
+                            <th>Q₁</th><th>Q₀</th>
+                            <th>Q₁⁺</th><th>Q₀⁺</th>
+                            <th>J₁</th><th>K₁</th><th>J₀</th><th>K₀</th>
+                        </tr>
+                        <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>X</td><td>1</td><td>X</td></tr>
+                        <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>X</td><td>X</td><td>1</td></tr>
+                        <tr><td>1</td><td>0</td><td>1</td><td>1</td><td>X</td><td>0</td><td>1</td><td>X</td></tr>
+                        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>X</td><td>1</td><td>X</td><td>1</td></tr>
+                    </table>
+                    <p><small>Note: X = Don't care condition</small></p>
+
+                    <div class="section-title">3.3 Excitation Table (JK Flip-Flop)</div>
+                    <table class="flip-flop-table">
+                        <tr>
+                            <th>Q</th><th>Q⁺</th><th>J</th><th>K</th><th>Operation</th>
+                        </tr>
+                        <tr><td>0</td><td>0</td><td>0</td><td>X</td><td>Reset/No change</td></tr>
+                        <tr><td>0</td><td>1</td><td>1</td><td>X</td><td>Set</td></tr>
+                        <tr><td>1</td><td>0</td><td>X</td><td>1</td><td>Reset</td></tr>
+                        <tr><td>1</td><td>1</td><td>X</td><td>0</td><td>Set/No change</td></tr>
+                    </table>
+
+                    <div class="section-title">3.4 K-Maps for J and K Inputs</div>
+                    
+                    <p><strong>For J₁ and K₁ (MSB Flip-Flop):</strong></p>
+                    
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <p><strong>J₁ K-Map</strong></p>
+                            <table class="kmap">
+                                <tr><th>J₁</th><th>Q₀=0</th><th>Q₀=1</th></tr>
+                                <tr><th>Q₁=0</th><td>0</td><td class="group1">1</td></tr>
+                                <tr><th>Q₁=1</th><td>X</td><td>X</td></tr>
+                            </table>
+                            <p class="formula" style="margin: 5px;">J₁ = Q₀</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <p><strong>K₁ K-Map</strong></p>
+                            <table class="kmap">
+                                <tr><th>K₁</th><th>Q₀=0</th><th>Q₀=1</th></tr>
+                                <tr><th>Q₁=0</th><td>X</td><td>X</td></tr>
+                                <tr><th>Q₁=1</th><td>0</td><td class="group1">1</td></tr>
+                            </table>
+                            <p class="formula" style="margin: 5px;">K₁ = Q₀</p>
+                        </div>
+                    </div>
+
+                    <p><strong>For J₀ and K₀ (LSB Flip-Flop):</strong></p>
+                    
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <p><strong>J₀ K-Map</strong></p>
+                            <table class="kmap">
+                                <tr><th>J₀</th><th>Q₀=0</th><th>Q₀=1</th></tr>
+                                <tr><th>Q₁=0</th><td class="group1">1</td><td>X</td></tr>
+                                <tr><th>Q₁=1</th><td class="group1">1</td><td>X</td></tr>
+                            </table>
+                            <p class="formula" style="margin: 5px;">J₀ = 1</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <p><strong>K₀ K-Map</strong></p>
+                            <table class="kmap">
+                                <tr><th>K₀</th><th>Q₀=0</th><th>Q₀=1</th></tr>
+                                <tr><th>Q₁=0</th><td>X</td><td class="group1">1</td></tr>
+                                <tr><th>Q₁=1</th><td>X</td><td class="group1">1</td></tr>
+                            </table>
+                            <p class="formula" style="margin: 5px;">K₀ = 1</p>
+                        </div>
+                    </div>
+
+                    <div class="section-title">3.5 Simplified Boolean Expressions</div>
+                    <div class="formula">
+                        J₁ = Q₀ &nbsp;&nbsp;&nbsp;&nbsp; K₁ = Q₀<br>
+                        J₀ = 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; K₀ = 1
+                    </div>
+                    <p><strong>Interpretation:</strong></p>
+                    <ul>
+                        <li>FF₀ (LSB) toggles every clock pulse (J₀=K₀=1) → T-flip-flop mode</li>
+                        <li>FF₁ (MSB) toggles only when Q₀=1 (J₁=K₁=Q₀)</li>
+                    </ul>
+
+                    <div class="section-title">3.6 Complete Logic Diagram</div>
+                    <div style="text-align: center; background: white; border: 2px solid #333; padding: 20px;">
+                        <div style="font-family: monospace; text-align: left; display: inline-block; line-height: 1.8; font-size: 14px;">
+<span style="color: #1565c0;">         VCC (Logic 1)</span>
+<span style="color: #1565c0;">            │</span>
+<span style="color: #1565c0;">            ├──► J₀</span>
+<span style="color: #1565c0;">            │</span>
+<span style="color: #1565c0;">            ├──► K₀</span>
+<span style="color: #333;">            │    </span>
+<span style="color: #c62828;">    CLK ────┼────┬────────┬────────┐</span>
+<span style="color: #333;">            │    │        │        │</span>
+<span style="color: #333;">            │    ▼        ▼        │</span>
+<span style="color: #333;">            │  ┌──────────────┐    │</span>
+<span style="color: #333;">            │  │              │◄───┘</span>
+<span style="color: #1565c0;">            └──┤    FF₀       │</span>
+<span style="color: #333;">               │   (JK)       ├──► Q₀</span>
+<span style="color: #333;">               │              │    │</span>
+<span style="color: #333;">               └──────────────┘    │</span>
+<span style="color: #333;">                    ▲              │</span>
+<span style="color: #333;">                    │              │</span>
+<span style="color: #1565c0;">                    └──────────────┘</span>
+<span style="color: #333;">                                   │</span>
+<span style="color: #333;">                                   ▼</span>
+<span style="color: #333;">                              ┌────────┐</span>
+<span style="color: #1565c0;">                              │  AND   │ (or direct connection)</span>
+<span style="color: #333;">                              │  (not  │</span>
+<span style="color: #333;">                              │ needed)│</span>
+<span style="color: #333;">                              └───┬────┘</span>
+<span style="color: #333;">                                  │</span>
+<span style="color: #1565c0;">                    ┌─────────────┴─────┐</span>
+<span style="color: #1565c0;">                    │                   │</span>
+<span style="color: #1565c0;">                    ▼ J₁                ▼ K₁</span>
+<span style="color: #333;">               ┌──────────────┐</span>
+<span style="color: #c62828;">    CLK ───────┤              │</span>
+<span style="color: #333;">               │    FF₁       ├──► Q₁</span>
+<span style="color: #333;">               │   (JK)       │</span>
+<span style="color: #333;">               │              │</span>
+<span style="color: #333;">               └──────────────┘</span>
+                        </div>
+                    </div>
+
+                    <div class="section-title">3.7 Detailed Circuit Schematic</div>
+                    <div style="background: #f5f5f5; padding: 20px; border: 2px solid #1a237e; margin: 20px 0;">
+                        <div style="font-family: 'Courier New', monospace; font-size: 13px; line-height: 2;">
+    <strong>COMPONENTS:</strong>
+    ─────────────────────────────────────────
+    
+    FF₀ (LSB - Q₀):
+    • Type: JK Flip-Flop (IC 7476)
+    • J₀ connected to VCC (Logic 1)
+    • K₀ connected to VCC (Logic 1)
+    • CLK: Common clock input
+    • Output: Q₀ (and Q₀' available)
+    
+    FF₁ (MSB - Q₁):
+    • Type: JK Flip-Flop (IC 7476)
+    • J₁ connected to Q₀ output
+    • K₁ connected to Q₀ output
+    • CLK: Common clock input (same as FF₀)
+    • Output: Q₁ (and Q₁' available)
+    
+    CLOCK:
+    • Common clock signal to both flip-flops
+    • Synchronous operation (simultaneous state change)
+    
+    OUTPUT:
+    • 2-bit output: Q₁Q₀
+    • Counts: 00 → 01 → 10 → 11 → 00...
+                        </div>
+                    </div>
+
+                    <div class="section-title">3.8 State Transition Verification</div>
+                    <table>
+                        <tr>
+                            <th>State</th><th>Q₁ Q₀</th><th>J₁K₁ J₀K₀</th><th>Next State</th><th>Action</th>
+                        </tr>
+                        <tr><td>0</td><td>0 0</td><td>0X 1X</td><td>0 1</td><td>FF₀ sets, FF₁ holds</td></tr>
+                        <tr><td>1</td><td>0 1</td><td>1X X1</td><td>1 0</td><td>FF₀ resets, FF₁ sets</td></tr>
+                        <tr><td>2</td><td>1 0</td><td>0X 1X</td><td>1 1</td><td>FF₀ sets, FF₁ holds</td></tr>
+                        <tr><td>3</td><td>1 1</td><td>1X X1</td><td>0 0</td><td>Both reset</td></tr>
+                    </table>
+
+                    <div class="section-title">3.9 Summary of Design</div>
+                    <div class="formula" style="background: #e3f2fd; border-color: #1565c0;">
+                        <strong>Design Equations:</strong><br>
+                        J₁ = Q₀, K₁ = Q₀<br>
+                        J₀ = 1, K₀ = 1<br><br>
+                        <strong>Modulo:</strong> 4 (counts 0 to 3)<br>
+                        <strong>Type:</strong> Synchronous Binary Up-Counter<br>
+                        <strong>Flip-Flops:</strong> 2 JK Flip-Flops
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>End of Solutions</strong></p>
+            <p>Knowledge Institute of Technology, Salem | Department of ECE</p>
+            <p>Course: BE23CS4101 – Digital Principles and Computer Organization</p>
+        </div>
+    </div>
+</body>
+</html>
